@@ -1,0 +1,5 @@
+/iesl_venv
+retriever_pipeline/dataset
+retriever_pipeline/intermediate-files/checkpoints
+retriever_pipeline/intermediate-files/wandb
+retriever_pipeline/intermediate-files/embeddings
