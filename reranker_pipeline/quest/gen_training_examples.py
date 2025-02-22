@@ -74,7 +74,7 @@ flags.DEFINE_integer(
 
 flags.DEFINE_bool("shuffle", True, "Whether to shuffle examples.")
 
-flags.DEFINE_integer("sp_model", "", "Path to T5 sentencepiece model.")
+flags.DEFINE_string("sp_model", "", "Path to T5 sentencepiece model.")
 
 
 def main(unused_argv):
