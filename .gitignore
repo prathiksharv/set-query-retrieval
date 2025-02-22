@@ -3,3 +3,8 @@ retriever_pipeline/dataset
 retriever_pipeline/intermediate-files/checkpoints
 retriever_pipeline/intermediate-files/wandb
 retriever_pipeline/intermediate-files/embeddings
+reranker_pipeline/quest/models
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
