@@ -94,7 +94,16 @@ def main(unused_argv):
   # List of tuples of (input, output) for T5.
   outputs = []
 
+  # Initialize counter
+  query_count = 0
+
   for example, prediction in zip(examples, predictions):
+    query_count += 1  # Increment query count
+
+    # Print progress every 100 queries
+    if query_count % 100 == 0:
+        print(f"Processed {query_count} queries...")
+
     # Add every relevant doc as a positive example.
     relevant_titles = set(example.docs)
     for doc_title in relevant_titles:
@@ -107,7 +116,10 @@ def main(unused_argv):
             True,
             FLAGS.context_size
         )
-        outputs.append(new_example)
+        # outputs.append(new_example)
+        if new_example:  # Only add non-None examples
+          outputs.append(new_example)
+
 
     # Add non-relevant predicted docs as negative example.
     num_predicted_negatives = 0
@@ -144,6 +156,13 @@ def main(unused_argv):
   # Write training examples to output file.
   if FLAGS.shuffle:
     random.shuffle(outputs)
+  # tsv_utils.write_tsv(outputs, FLAGS.output)
+  # Remove None rows before writing the TSV file
+  print(f"Total outputs before filtering: {len(outputs)}")
+  outputs = [row for row in outputs if row is not None]   #filtering to check many queries were skipped due to missing documents.
+  print(f"Total outputs after filtering: {len(filtered_outputs)}")
+
+  # Now write the cleaned outputs
   tsv_utils.write_tsv(outputs, FLAGS.output)
 
 

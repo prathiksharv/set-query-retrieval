@@ -32,7 +32,9 @@ def get_example(
 ):
   """Adds a tuple representing an example to `outputs`."""
   if doc_title not in doc_title_to_text:
-    raise Exception("Missing document title: %s" % doc_title)
+    # raise Exception("Missing document title: %s" % doc_title)
+    print(f"Warning: Missing document title '{doc_title}', skipping...")
+    return None  # Skip missing documents instead of raising an error.
 
   doc_text = doc_title + " " + doc_title_to_text[doc_title]
   truncated_text = spm_wrapper.truncate(doc_text, context_size)
