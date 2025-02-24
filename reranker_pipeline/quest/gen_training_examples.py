@@ -160,7 +160,7 @@ def main(unused_argv):
   # Remove None rows before writing the TSV file
   print(f"Total outputs before filtering: {len(outputs)}")
   outputs = [row for row in outputs if row is not None]   #filtering to check many queries were skipped due to missing documents.
-  print(f"Total outputs after filtering: {len(filtered_outputs)}")
+  print(f"Total outputs after filtering: {len(outputs)}")
 
   # Now write the cleaned outputs
   tsv_utils.write_tsv(outputs, FLAGS.output)
