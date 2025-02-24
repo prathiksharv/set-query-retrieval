@@ -24,11 +24,17 @@ We run T5 on (1). We use (1) and (2) during post-processing.
 from absl import app
 from absl import flags
 
-from language.quest.common import document_utils
-from language.quest.common import example_utils
-from language.quest.common import tsv_utils
-from language.quest.common import vocab_utils
-from language.quest.xattn import xattn_utils
+import sys
+import os
+
+# Add the project root directory (IESL-SET-QUERY-RETRIEVAL) to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
+
+from common import document_utils
+from common import example_utils
+from common import tsv_utils
+from common import vocab_utils
+from common import xattn_utils
 
 FLAGS = flags.FLAGS
 
@@ -47,7 +53,7 @@ flags.DEFINE_integer("context_size", 384,
 flags.DEFINE_integer("topk", 100,
                      "Maximum number of predicted documents to consider.")
 
-flags.DEFINE_integer("sp_model", "",
+flags.DEFINE_string("sp_model", "",
                      "Path to T5 sentencepiece model.")
 
 
