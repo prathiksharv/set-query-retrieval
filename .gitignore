@@ -10,3 +10,6 @@ __pycache__/
 *.pyc
 
 reranker_pipeline/quest/outputs
+
+#finetuned
+reranker_pipeline/quest/fine-tuned-cross-encoder
